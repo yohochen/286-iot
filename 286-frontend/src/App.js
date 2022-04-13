@@ -1,8 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import { auth, firestore, database } from './firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { database } from './firebase';
+// import { collection, query, where, getDocs } from 'firebase/firestore';
 
 import LineChart from './components/LineChart';
 
@@ -15,7 +15,7 @@ function App() {
 			const info = snapshot.val();
 			for (var id in info) {
 				if (
-					// check correct date
+					// check correct date (april & may)
 					info[id].time.startsWith('4/') ||
 					info[id].time.startsWith('5/')
 				) {
@@ -28,25 +28,6 @@ function App() {
 	return (
 		<div className='container'>
 			<LineChart data={data} />
-			{/* <h3 className='p-3 text-center'>React - Display a list of items</h3>
-			<table className='table table-striped table-bordered'>
-				<thead>
-					<tr>
-						<th>Time</th>
-						<th>Moisture</th>
-						<th>Humidity</th>
-					</tr>
-				</thead>
-				<tbody>
-					{data.map((d) => (
-						<tr key={d.id}>
-							<td>{d.time}</td>
-							<td>{d.moisture}</td>
-							<td>{d.humidity}</td>
-						</tr>
-					))}
-				</tbody>
-			</table> */}
 		</div>
 	);
 }
