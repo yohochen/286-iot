@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { auth, firestore, database } from './firebase';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
+import LineChart from './components/LineChart';
+
 // export default App;
 function App() {
 	const [data, setData] = useState([]);
@@ -25,7 +27,8 @@ function App() {
 
 	return (
 		<div className='container'>
-			<h3 className='p-3 text-center'>React - Display a list of items</h3>
+			<LineChart data={data} />
+			{/* <h3 className='p-3 text-center'>React - Display a list of items</h3>
 			<table className='table table-striped table-bordered'>
 				<thead>
 					<tr>
@@ -43,7 +46,7 @@ function App() {
 						</tr>
 					))}
 				</tbody>
-			</table>
+			</table> */}
 		</div>
 	);
 }
