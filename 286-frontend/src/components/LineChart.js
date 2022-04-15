@@ -17,12 +17,13 @@ const LineChart = (props) => {
 	var moistures = [];
 	var temperatures = [];
 
-	for (var id in props.data.slice(-100)) {
+	const slicedData = props.data.slice(-200);
+	for (var id in slicedData) {
 		// getting the latest 100 datapoint, subject to change
-		timeLabels.push(props.data[id].time);
-		humidities.push(props.data[id].humidity);
-		moistures.push(props.data[id].moisture);
-		temperatures.push(props.data[id].temperature);
+		timeLabels.push(slicedData[id].time);
+		humidities.push(slicedData[id].humidity);
+		moistures.push(slicedData[id].moisture);
+		temperatures.push(slicedData[id].temperature);
 	}
 
 	return (
