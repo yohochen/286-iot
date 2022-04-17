@@ -10,17 +10,18 @@ import LineChart from './components/LineChart';
 function App() {
 	const [data, setData] = useState([]);
 	useEffect(() => {
-		const ref = database.ref('/humidity');
+		const ref = database.ref('/humidity').limitToLast(200);
 		ref.on('value', (snapshot) => {
 			const info = snapshot.val();
 			for (var id in info) {
-				if (
-					// check correct date (april & may)
-					info[id].time.startsWith('4/') ||
-					info[id].time.startsWith('5/')
-				) {
-					setData((data) => [...data, { id, ...info[id] }]);
-				}
+				setData((data) => [...data, { id, ...info[id] }]);
+				// if (
+				// 	// check correct date (april & may)
+				// 	info[id].time.startsWith('4/') ||
+				// 	info[id].time.startsWith('5/')
+				// ) {
+				// 	setData((data) => [...data, { id, ...info[id] }]);
+				// }
 			}
 		});
 	}, []);
