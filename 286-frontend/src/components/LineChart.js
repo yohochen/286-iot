@@ -1,6 +1,8 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
+import Card from 'react-bootstrap/Card';
+import { Button } from 'react-bootstrap';
 
 const LineChart = (props) => {
 	// const payload = props.data.slice(0, 50).map((cur) => {
@@ -85,7 +87,7 @@ const LineChart = (props) => {
 			<br></br>
 			<div className='row'>
 				<div className='col '>
-					<h3 style={{ color: 'rgba(255, 159, 64, 1)' }}>
+					{/* <h3 style={{ color: 'rgba(255, 159, 64, 1)' }}>
 						Recent Temperature Low:{' '}
 						{tempLow == Number.MAX_SAFE_INTEGER
 							? ''
@@ -96,11 +98,30 @@ const LineChart = (props) => {
 						{tempHigh == Number.MIN_SAFE_INTEGER
 							? ''
 							: tempHigh.toFixed(1) + '°F'}
-					</h3>
+					</h3> */}
+					<Card
+						style={{
+							width: '18rem',
+							backgroundColor: 'rgba(255, 159, 64, 1)',
+						}}
+					>
+						<Card.Body>
+							<Card.Title>Recent Temperature Range</Card.Title>
+							<Card.Text>
+								{tempLow == Number.MAX_SAFE_INTEGER
+									? ''
+									: tempLow.toFixed(1) + '°F'}{' '}
+								~{' '}
+								{tempHigh == Number.MIN_SAFE_INTEGER
+									? ''
+									: tempHigh.toFixed(1) + '°F'}
+							</Card.Text>
+						</Card.Body>
+					</Card>
 				</div>
 
 				<div className='col'>
-					<h3 style={{ color: 'green' }}>
+					{/* <h3 style={{ color: 'green' }}>
 						Recent Moisture Low:{' '}
 						{moistLow == Number.MAX_SAFE_INTEGER
 							? ''
@@ -111,7 +132,26 @@ const LineChart = (props) => {
 						{moistHigh == Number.MIN_SAFE_INTEGER
 							? ''
 							: moistHigh.toFixed(1)}
-					</h3>
+					</h3> */}
+					<Card
+						style={{
+							width: '18rem',
+							backgroundColor: 'rgba(54,161,100)',
+						}}
+					>
+						<Card.Body>
+							<Card.Title>Recent Moisture Range</Card.Title>
+							<Card.Text>
+								{moistLow == Number.MAX_SAFE_INTEGER
+									? ''
+									: moistLow.toFixed(1)}{' '}
+								~{' '}
+								{moistHigh == Number.MIN_SAFE_INTEGER
+									? ''
+									: moistHigh.toFixed(1)}
+							</Card.Text>
+						</Card.Body>
+					</Card>
 				</div>
 			</div>
 			<br></br>
