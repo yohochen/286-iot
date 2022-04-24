@@ -10,7 +10,9 @@ import LineChart from './components/LineChart';
 function App() {
 	const [data, setData] = useState([]);
 	useEffect(() => {
-		const ref = database.ref('/humidity').limitToLast(200);
+
+		setData([]);
+		const ref = database.ref('/humidity').limitToLast(100);
 		ref.on('value', (snapshot) => {
 			const info = snapshot.val();
 			for (var id in info) {
@@ -27,7 +29,8 @@ function App() {
 	}, []);
 
 	return (
-		<div className='container'>
+		<div >
+			<div className='header' >IOT project</div>
 			<LineChart data={data} />
 		</div>
 	);
